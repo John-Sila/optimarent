@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../contexts/ThemeContext';
-import { ArrowLeft, Download, Send, CheckCircle } from 'lucide-react';
+import { ArrowLeft, Download, Send, CheckCircle, Mail, Clock, Home } from 'lucide-react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 interface Property {
   code: string;
@@ -20,59 +20,81 @@ const Application: React.FC = () => {
   const [properties] = useState<Property[]>([
     // array[0]
     {
-      code: "NYC001",
-      state: "New York", 
-      city: "Manhattan",
+      code: "001",
+      state: "Florida,", 
+      city: "St. Petersburg",
       zipcode: "10001",
       nature: "1 Bedroom Luxury Apartment",
-      monthly_rent: "$3,200",
+      monthly_rent: "$1,200",
       application_fee: "$75",
       currency: "USD"
     },
     // array[1]
     {
-      code: "NYC002",
+      code: "002",
       state: "New York", 
       city: "Brooklyn", 
       zipcode: "11211",
       nature: "2 Bedroom Modern Apartment",
-      monthly_rent: "$4,500",
+      monthly_rent: "$2,200",
       application_fee: "$100",
       currency: "USD"
     },
     // array[2]
     {
-      code: "NYC003",
-      state: "New York",
-      city: "Williamsburg",
+      code: "003",
+      state: "Maryland",
+      city: "Baltimore",
       zipcode: "11249", 
       nature: "3 Bedroom Loft",
       monthly_rent: "$6,800",
-      application_fee: "$125",
+      application_fee: "$145",
       currency: "USD"
     },
     // array[3]
     {
-      code: "NYC004",
+      code: "004",
       state: "New York",
       city: "Chelsea",
       zipcode: "10011",
       nature: "Studio Apartment", 
-      monthly_rent: "$2,900",
+      monthly_rent: "$1,300",
       application_fee: "$60",
       currency: "USD"
     },
     // array[4]
     {
-      code: "NYC005",
-      state: "New York",
-      city: "East Village",
+      code: "005",
+      state: "Massachusetts",
+      city: "Springfield",
       zipcode: "10003",
       nature: "Luxury 2 Bedroom", 
-      monthly_rent: "$5,200",
-      application_fee: "$110",
+      monthly_rent: "$1,400",
+      application_fee: "$85",
       currency: "USD"
-    }
+    },
+    // array[5]
+    {
+      code: "006",
+      state: "Missouri",
+      city: "Kansas City",
+      zipcode: "65807",
+      nature: "Luxury 2 Bedroom", 
+      monthly_rent: "$1,450",
+      application_fee: "$90",
+      currency: "USD"
+    },
+    // array[6]
+    {
+      code: "007",
+      state: "Minnesota",
+      city: "Minneapolis",
+      zipcode: "55401",
+      nature: "Luxury 2 Bedroom", 
+      monthly_rent: "$1,450",
+      application_fee: "$90",
+      currency: "USD"
+    },
   ]);
 
   const [selectedCode, setSelectedCode] = useState('');
@@ -92,8 +114,6 @@ const Application: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [addInitialRent, setAddInitialRent] = useState(false);
-  const [paymentConfirmed, setPaymentConfirmed] = useState(false);
-
   // Remove fetch useEffect - using hardcoded data
   useEffect(() => {
     if (selectedCode) {
@@ -122,58 +142,149 @@ const Application: React.FC = () => {
     setLoading(false);
   };
 
-    const totalAmount = addInitialRent 
-        ? parseFloat(formData.application_fee.replace(/[$,]/g, '')) + parseFloat(formData.monthly_rent.replace(/[$,]/g, ''))
-        : parseFloat(formData.application_fee.replace(/[$,]/g, ''));
+  const location = useLocation();
 
-  if (submitted) {
-    return (
-      <div className={`
-        min-h-screen flex items-center justify-center py-12 px-4
-        ${theme === 'dark' 
-          ? 'bg-gradient-to-br from-slate-900 via-indigo-900 to-blue-900' 
-          : 'bg-gradient-to-br from-amber-500 via-orange-500 to-rose-500'
-        }
-        text-white
-      `}>
+  // On first load, read ?code= and preselect
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const codeFromUrl = params.get('code');
+    if (codeFromUrl) {
+      setSelectedCode(codeFromUrl);
+    }
+  }, [location.search]);
+
+  const totalAmount = addInitialRent 
+      ? parseFloat(formData.application_fee.replace(/[$,]/g, '')) + parseFloat(formData.monthly_rent.replace(/[$,]/g, ''))
+      : parseFloat(formData.application_fee.replace(/[$,]/g, ''));
+
+if (submitted) {
+  return (
+    <div className={`
+      min-h-screen flex items-center justify-center py-12 px-4 relative overflow-hidden
+      ${theme === 'dark' 
+        ? 'bg-gradient-to-br from-slate-900 via-indigo-900/80 to-blue-900/90' 
+        : 'bg-gradient-to-br from-amber-500/95 via-orange-500/90 to-rose-500/95'
+      }
+      text-white
+    `}>
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0">
         <div className={`
-          max-w-md w-full backdrop-blur-2xl rounded-3xl p-12 text-center shadow-2xl border
+          absolute -top-40 -right-40 w-80 h-80 rounded-full opacity-20 animate-blob
+          ${theme === 'dark' ? 'bg-cyan-500/30' : 'bg-white/20'}
+        `} />
+        <div className={`
+          absolute -bottom-40 -left-40 w-96 h-96 rounded-full opacity-20 animate-blob animation-delay-2000
+          ${theme === 'dark' ? 'bg-emerald-500/30' : 'bg-amber-100/30'}
+        `} />
+        <div className={`
+          absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full opacity-10 animate-ping
+          ${theme === 'dark' ? 'bg-sky-400/20' : 'bg-orange-300/20'}
+        `} />
+      </div>
+
+      <div className={`
+        relative max-w-lg w-full backdrop-blur-3xl rounded-3xl p-12 text-center shadow-2xl border-2 transform hover:scale-[1.02] transition-all duration-500
+        ${theme === 'dark' 
+          ? 'bg-gradient-to-b from-slate-800/50 to-indigo-900/40 border-indigo-500/40 hover:border-indigo-400/60 hover:shadow-indigo-500/20 hover:shadow-2xl' 
+          : 'bg-gradient-to-b from-white/30 to-amber-500/20 border-amber-400/50 hover:border-orange-500/60 hover:shadow-orange-400/30 hover:shadow-3xl'
+        }
+      `}>
+        
+        {/* Success Icon with Glow */}
+        <div className={`
+          relative mx-auto mb-8 p-4 rounded-3xl shadow-2xl
           ${theme === 'dark' 
-            ? 'bg-slate-800/40 border-indigo-500/30' 
-            : 'bg-white/20 border-amber-300/40'
+            ? 'bg-gradient-to-r from-emerald-500/20 to-emerald-600/20 shadow-emerald-500/50 hover:shadow-emerald-400/70' 
+            : 'bg-gradient-to-r from-emerald-400/30 to-emerald-500/30 shadow-emerald-400/60 hover:shadow-emerald-500/80'
           }
         `}>
-          <CheckCircle className="w-24 h-24 mx-auto mb-8 text-emerald-400 animate-bounce" />
-          <h2 className={`text-4xl font-black mb-4 ${
-            theme === 'dark' ? 'text-cyan-300' : 'text-amber-100'
-          }`}>
-            Application Submitted!
-          </h2>
-          <p className={`text-xl mb-12 opacity-95 ${
-            theme === 'dark' ? 'text-slate-300' : 'text-slate-800'
-          }`}>
-            We'll review and contact you within 24 hours.
-          </p>
-          
-          <div className="space-y-4">
-            <button className={`
-              bg-white text-slate-900 px-8 py-4 rounded-2xl font-bold shadow-xl hover:shadow-2xl transition-all w-full
-              ${theme === 'dark' ? 'hover:bg-slate-100' : 'hover:bg-amber-50'}
-            `}>
-              <Download className="inline w-5 h-5 mr-2" />
-              Download PDF
-            </button>
-            <button 
-              onClick={() => navigate('/')}
-              className="bg-transparent border-2 border-white px-8 py-4 rounded-2xl font-bold hover:bg-white hover:text-slate-900 transition-all w-full"
-            >
-              Back to Homes
-            </button>
+          <CheckCircle className="w-28 h-28 mx-auto text-emerald-400 animate-pulse" />
+          <div className={`
+            absolute -inset-2 rounded-3xl blur-xl opacity-70 animate-ping
+            ${theme === 'dark' ? 'bg-emerald-500/30' : 'bg-emerald-400/40'}
+          `} />
+        </div>
+
+        {/* Title */}
+        <h2 className={`text-5xl md:text-6xl font-black mb-6 leading-tight bg-gradient-to-r ${
+          theme === 'dark' 
+            ? 'from-emerald-400 via-cyan-400 to-sky-400 bg-clip-text text-transparent drop-shadow-2xl' 
+            : 'from-emerald-500 via-amber-400 to-orange-500 bg-clip-text text-transparent drop-shadow-2xl'
+        }`}>
+          Success!
+        </h2>
+
+        {/* Subtitle */}
+        <div className={`text-2xl mb-2 font-bold ${
+          theme === 'dark' ? 'text-cyan-200' : 'text-amber-100/90'
+        }`}>
+          Application Submitted
+        </div>
+
+        {/* Main Message */}
+        <div className={`
+          text-lg space-y-3 p-6 rounded-xl backdrop-blur-sm border
+          ${theme === 'dark' 
+            ? 'bg-slate-900/50 border-slate-700/50 text-slate-300' 
+            : 'bg-white/40 border-amber-200/50 text-slate-800'
+          }
+        `}>
+          <div className="flex items-start space-x-3 mb-2">
+            <CheckCircle className="w-6 h-6 mt-1 text-emerald-400 flex-shrink-0" />
+            <span>If your payment was successful, expect an email to that address within 30 mins with more details.</span>
+          </div>
+          <div className="flex items-start space-x-3">
+            <Mail className="w-6 h-6 mt-1 text-sky-400 flex-shrink-0" />
+            <span><strong>Check spam folder</strong> if not received</span>
           </div>
         </div>
+
+        {/* Support Section */}
+        <div className={`
+          my-8 p-4 rounded-2xl text-center backdrop-blur-sm border font-mono text-sm tracking-wide
+          ${theme === 'dark' 
+            ? 'bg-slate-900/60 border-slate-700/50 text-slate-400' 
+            : 'bg-white/50 border-amber-200/50 text-slate-800/90'
+          }
+        `}>
+          <p className="flex items-center justify-center space-x-2">
+            <Mail className="w-4 h-4 text-sky-400" />
+            <span>For support: </span>
+            <span className="font-bold text-sky-400 hover:text-sky-300 cursor-pointer underline decoration-sky-400">optimabyte@gmail.com</span>
+          </p>
+        </div>
+
+
+        {/* Button */}
+        <button 
+          onClick={() => navigate('/')}
+          className={`
+            w-full relative bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-600 
+            text-white py-6 px-10 rounded-3xl text-xl font-black shadow-2xl hover:shadow-3xl 
+            hover:from-emerald-500 hover:via-emerald-400 hover:to-teal-500 
+            transform hover:-translate-y-2 hover:scale-[1.02] transition-all duration-500 
+            border-2 border-emerald-400/50 backdrop-blur-xl overflow-hidden
+          `}
+        >
+          <span className="flex items-center justify-center space-x-3">
+            <Home className="w-6 h-6" />
+            <span>Back to Luxury Homes</span>
+            <ArrowLeft className="w-6 h-6 rotate-180" />
+          </span>
+        </button>
+
+        {/* Subtle Footer */}
+        <div className={`mt-8 pt-6 text-xs opacity-75 ${
+          theme === 'dark' ? 'text-slate-400' : 'text-white/80'
+        }`}>
+          Your lease journey begins now. Thank you for choosing OptimaRent! 🗽
+        </div>
       </div>
-    );
-  }
+    </div>
+  );
+}
+
 
   return (
     <div className={`
@@ -210,7 +321,7 @@ const Application: React.FC = () => {
               ? 'bg-gradient-to-r from-cyan-400 via-blue-400 to-sky-400 bg-clip-text text-transparent'
               : 'bg-gradient-to-r from-slate-900 via-orange-900 to-amber-900 bg-clip-text text-transparent'
           }`}>
-            NYC Lease Application
+            OptimaRent Lease Application
           </h1>
           
           <div className="text-center mb-12">
@@ -384,7 +495,7 @@ const Application: React.FC = () => {
                 <label className={`block text-xs font-semibold uppercase tracking-wide mb-2 ${
                   theme === 'dark' ? 'text-slate-400' : 'text-slate-600'
                 }`}>
-                  App Fee
+                  Application Fee
                 </label>
                 <input 
                   type="text" 
@@ -588,7 +699,7 @@ const Application: React.FC = () => {
                     <span className="mt-1 text-rose-400">⚠️</span>
                     <span>
                         By pressing the submit button, you confirm that you have paid the amount stated to the email given via Airtm. 
-                        This will queue your account for confirmation.
+                        The application fee will queue your account for confirmation immediately.
                     </span>
                     </p>
                 </div>

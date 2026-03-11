@@ -1,6 +1,7 @@
 import React from 'react';
 import { LucideFacebook, LucideTwitter, LucideInstagram, LucideMapPin, LucidePhone, LucideMail } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
+import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   const { theme } = useTheme();
@@ -31,7 +32,7 @@ const Footer: React.FC = () => {
           <p className={`mb-6 leading-relaxed ${
             theme === 'dark' ? 'text-slate-300' : 'text-slate-700'
           }`}>
-            Luxury apartments in New York City. Manhattan, Brooklyn, Williamsburg. 
+            Luxury apartments across the states. 
             Premium rentals with fast approvals.
           </p>
           <div className={`flex items-center space-x-4 text-sm ${
@@ -63,19 +64,30 @@ const Footer: React.FC = () => {
               } hover:translate-x-2 transition-all duration-300 font-medium`}>Apply for Lease</a>
             </li>
             <li>
-              <a href="#" className={`group inline-flex items-center space-x-2 ${
-                theme === 'dark' 
-                  ? 'text-slate-400 hover:text-white' 
-                  : 'text-slate-600 hover:text-amber-700'
-              } hover:translate-x-2 transition-all duration-300 font-medium`}>View Properties</a>
+              <Link 
+                to="/terms" 
+                className={`group inline-flex items-center space-x-2 ${
+                  theme === 'dark' 
+                    ? 'text-slate-400 hover:text-white' 
+                    : 'text-slate-600 hover:text-amber-700'
+                } hover:translate-x-2 transition-all duration-300 font-medium`}
+              >
+                Terms of Use
+              </Link>
             </li>
             <li>
-              <a href="#" className={`group inline-flex items-center space-x-2 ${
-                theme === 'dark' 
-                  ? 'text-slate-400 hover:text-white' 
-                  : 'text-slate-600 hover:text-amber-700'
-              } hover:translate-x-2 transition-all duration-300 font-medium`}>Tour Bookings</a>
+              <Link 
+                to="/about-us" 
+                className={`group inline-flex items-center space-x-2 ${
+                  theme === 'dark' 
+                    ? 'text-slate-400 hover:text-white' 
+                    : 'text-slate-600 hover:text-amber-700'
+                } hover:translate-x-2 transition-all duration-300 font-medium`}
+              >
+                About OptimaRent
+              </Link>
             </li>
+
           </ul>
         </div>
 
@@ -138,18 +150,18 @@ const Footer: React.FC = () => {
               theme === 'dark' ? 'text-slate-300' : 'text-slate-700'
             }`}>
               <LucideMail className={`w-5 h-5 ${theme === 'dark' ? 'text-sky-400' : 'text-orange-500'}`} />
-              <a href="mailto:rentals@optimarent.com" className="hover:text-slate-900 dark:hover:text-white transition font-medium">rentals@optimarent.com</a>
+              <a href="mailto:optimabyte@gmail.com" className="hover:text-slate-900 dark:hover:text-white transition font-medium">optimabyte@gmail.com</a>
             </div>
-            <div className={`flex items-center space-x-3 ${
+            {/* <div className={`flex items-center space-x-3 ${
               theme === 'dark' ? 'text-slate-300' : 'text-slate-700'
-            }`}>
+              }`}>
               <LucidePhone className={`w-5 h-5 ${theme === 'dark' ? 'text-emerald-400' : 'text-rose-500'}`} />
               <a href="tel:+12125550123" className="hover:text-slate-900 dark:hover:text-white transition font-medium">(212) 555-0123</a>
-            </div>
+            </div> */}
           </div>
           
           <div className="flex space-x-4 pt-2">
-            <a href="#" className={`group w-14 h-14 ${
+            {/* <a href="#" className={`group w-14 h-14 ${
               theme === 'dark' 
                 ? 'bg-white/10 border border-white/20 hover:bg-blue-600' 
                 : 'bg-white/20 border border-slate-200/50 hover:bg-blue-500'
@@ -169,7 +181,7 @@ const Footer: React.FC = () => {
                 : 'bg-white/20 border border-slate-200/50 hover:bg-pink-500'
             } backdrop-blur-sm rounded-2xl flex items-center justify-center hover:scale-110 hover:shadow-2xl transition-all duration-300`}>
               <LucideInstagram size={20} className="group-hover:scale-110 transition" />
-            </a>
+            </a> */}
           </div>
         </div>
       </div>

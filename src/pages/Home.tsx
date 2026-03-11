@@ -13,35 +13,68 @@ import {
   Heart 
 } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
+import ReviewsSection from '../components/Reviews';
 
 const Home: React.FC = () => {
   const { theme } = useTheme();
 
   const featuredProperties = [
     { 
-      code: 'NYC001', 
-      city: 'Manhattan', 
+      code: '001', 
+      city: 'FL', 
       beds: 1, 
       baths: 1, 
-      rent: '$3,200', 
-      img: 'https://ar.rdcpix.com/28f64e1181a6e3230d67fe1f3e3ab372c-f3076399164rd-w960_h720.jpg'
+      rent: '$1,200', 
+      img: 'https://i.postimg.cc/k5F8x4FF/My-Apartment-In-The-States.png'
     },
     { 
-      code: 'NYC002', 
-      city: 'Brooklyn', 
+      code: '002', 
+      city: 'NY', 
       beds: 2, 
       baths: 2, 
-      rent: '$4,500', 
+      rent: '$2,200', 
       img: 'https://ssl.cdn-redfin.com/photo/rent/16792665-0c25-4d96-a3fc-5e5f894209c2/islphoto/genIsl.0_5.webp'
     },
     { 
-      code: 'NYC003', 
-      city: 'Williamsburg', 
+      code: '003', 
+      city: 'MD', 
       beds: 3, 
       baths: 2, 
-      rent: '$6,800', 
+      rent: '$4,800', 
       img: 'https://photos.zillowstatic.com/fp/51184818793b5b05dcfbd270ff0d59a2-p_e.jpg'
-    }
+    },
+    { 
+      code: '004', 
+      city: 'NY', 
+      beds: 2, 
+      baths: 2, 
+      rent: '$2,300', 
+      img: 'https://i.postimg.cc/gcSwFyyx/apartment1.png'
+    },
+    { 
+      code: '005', 
+      city: 'MA', 
+      beds: 2, 
+      baths: 2, 
+      rent: '$1,800', 
+      img: 'https://i.postimg.cc/25kmSMr8/apartment2.png'
+    },
+    { 
+      code: '006', 
+      city: 'MO', 
+      beds: 2, 
+      baths: 3, 
+      rent: '$1,450', 
+      img: 'https://i.postimg.cc/hjJGK61Q/apartment3.png'
+    },
+    { 
+      code: '007', 
+      city: 'MN', 
+      beds: 2, 
+      baths: 3, 
+      rent: '$1,500', 
+      img: 'https://g5-assets-cld-res.cloudinary.com/image/upload/x_3,y_0,h_1055,w_1582,c_crop/q_auto,f_auto,c_fill,g_center,h_800,w_1200/v1605804778/g5/g5-c-ik8lejjz-capreit-client/g5-cl-1i0qmj6i7b-loring-park-apartments/uploads/1300-Yale-Pl-Portfolio--010_w28k3z_paqqa0.jpg'
+    },
   ];
 
   return (
@@ -60,7 +93,7 @@ const Home: React.FC = () => {
         <div className="relative z-10 text-center max-w-5xl mx-auto px-4">
           <div className="inline-flex items-center bg-white/20 backdrop-blur-xl rounded-full px-6 py-3 mb-8 border border-white/30">
             <LucideHome className="w-5 h-5 mr-2" />
-            <span className="font-semibold">5+ Luxury Apartments Available</span>
+            <span className="font-semibold">10+ Luxury Apartments Available</span>
           </div>
           <h1 className={`text-5xl md:text-7xl font-black mb-6 leading-tight ${
             theme === 'dark' 
@@ -68,11 +101,11 @@ const Home: React.FC = () => {
               : 'bg-gradient-to-r from-white via-amber-100 to-orange-100 bg-clip-text text-transparent'
           }`}>
             Luxury Rentals
-            <span className="block text-4xl md:text-5xl font-light">NYC's Finest</span>
+            <span className="block text-4xl md:text-5xl font-light">America's Finest</span>
           </h1>
           <p className="text-xl md:text-2xl mb-10 opacity-95 max-w-3xl mx-auto leading-relaxed">
-            Modern apartments in Manhattan, Brooklyn & Williamsburg. 
-            Move-in ready with fast approvals. From $3,200/month.
+            Modern apartments in Manhattan, Brooklyn, Williamsburg & more. 
+            Move-in ready with fast approvals. From $1,200/month.
           </p>
           
           {/* Hero Search */}
@@ -128,7 +161,7 @@ const Home: React.FC = () => {
             {featuredProperties.map((property, idx) => (
               <Link 
                 key={property.code}
-                to="/apply"
+                to={`/apply?code=${property.code}`}
                 className={`group relative overflow-hidden rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-700 hover:-translate-y-6 ${
                   theme === 'dark' 
                     ? 'bg-slate-800/50 backdrop-blur-xl border border-slate-700/50' 
@@ -267,6 +300,10 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section>
+
+      <ReviewsSection />
+
+
 
       {/* Final CTA */}
       <section className={`
