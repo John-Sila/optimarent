@@ -104,7 +104,7 @@ const Home: React.FC = () => {
             <span className="block text-4xl md:text-5xl font-light">America's Finest</span>
           </h1>
           <p className="text-xl md:text-2xl mb-10 opacity-95 max-w-3xl mx-auto leading-relaxed">
-            Modern apartments in Manhattan, Brooklyn, Williamsburg & more. 
+            Modern apartments in Manhattan, Brooklyn, Williamsburg & all across the states. 
             Move-in ready with fast approvals. From $1,200/month.
           </p>
           
@@ -153,7 +153,7 @@ const Home: React.FC = () => {
             <p className={`text-xl ${
               theme === 'dark' ? 'text-slate-300' : 'text-slate-700'
             } max-w-2xl mx-auto`}>
-              Handpicked luxury apartments ready for immediate occupancy in NYC
+              Handpicked luxury apartments ready for immediate occupancy
             </p>
           </div>
 
@@ -318,7 +318,7 @@ const Home: React.FC = () => {
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
           <div className="inline-flex items-center bg-white/20 backdrop-blur-xl rounded-3xl px-8 py-4 mb-12 border border-white/40 max-w-2xl mx-auto">
             <Filter className="w-6 h-6 mr-3 opacity-90" />
-            <span className="text-xl font-bold">Ready to secure your NYC dream home?</span>
+            <span className="text-xl font-bold">Ready to secure your dream home?</span>
           </div>
           
           <h2 className={`text-5xl md:text-6xl font-black mb-8 leading-tight ${

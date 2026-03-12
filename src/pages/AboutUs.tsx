@@ -22,7 +22,7 @@ const AboutUs: React.FC = () => {
     { year: '2022', title: 'Williamsburg', desc: 'Entered premium Williamsburg market' },
     { year: '2023', title: '600+ Leases', desc: 'Milestone: 600+ apartments leased' },
     { year: '2024', title: 'Airtm Payments', desc: 'Global payment integration for international renters' },
-    { year: '2026', title: '1000+ Happy', desc: 'Serving 100+ residents across the US' }
+    { year: '2026', title: '1000+ Happy', desc: 'Serving 1000+ residents across the US' }
   ];
 
   const stats = [
@@ -185,7 +185,7 @@ const AboutUs: React.FC = () => {
         </div>
       </section>
 
-      {/* NYC Focus */}
+      {/* U.S. Nationwide Focus */}
       <section className={`
         py-24 relative
         ${theme === 'dark' 
@@ -201,7 +201,7 @@ const AboutUs: React.FC = () => {
                   ? 'bg-gradient-to-r from-white to-emerald-200 bg-clip-text text-transparent'
                   : 'bg-gradient-to-r from-slate-900 to-orange-900 bg-clip-text text-transparent'
               }`}>
-                NYC's Most Trusted Rental Platform
+                America's Most Trusted Rental Platform
               </h3>
               <div className="space-y-6 text-xl">
                 <div className={`flex items-start space-x-4 p-4 rounded-2xl backdrop-blur-sm border ${
@@ -211,7 +211,7 @@ const AboutUs: React.FC = () => {
                 }`}>
                   <MapPin className="w-8 h-8 mt-1 text-orange-500 flex-shrink-0" />
                   <span className={`${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}>
-                    Manhattan, Brooklyn, Williamsburg, Chelsea, East Village
+                    NYC • Chicago • Miami • LA • Austin • Seattle • Denver
                   </span>
                 </div>
                 <div className={`flex items-start space-x-4 p-4 rounded-2xl backdrop-blur-sm border ${
@@ -221,7 +221,7 @@ const AboutUs: React.FC = () => {
                 }`}>
                   <Award className="w-8 h-8 mt-1 text-emerald-500 flex-shrink-0" />
                   <span className={`${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}>
-                    8+ years perfecting NYC luxury rentals
+                    8+ years perfecting luxury rentals nationwide
                   </span>
                 </div>
               </div>
@@ -231,10 +231,12 @@ const AboutUs: React.FC = () => {
                 ? 'bg-gradient-to-br from-slate-800 to-indigo-900 border-2 border-slate-700/50' 
                 : 'bg-gradient-to-br from-amber-100 to-orange-200 border-2 border-amber-200/50'
             }`}>
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-rose-500/10" />
-              <div className="absolute inset-0 flex items-center justify-center text-6xl">🗽</div>
-              <div className="absolute bottom-8 left-8 text-white text-4xl font-bold bg-black/50 px-6 py-3 rounded-2xl">
-                NYC's Premier Rentals Since 2018
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-blue-500/10" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-6xl">🇺🇸</div>
+              </div>
+              <div className="absolute bottom-8 left-8 text-white text-4xl font-bold bg-black/60 px-6 py-3 rounded-2xl backdrop-blur-sm">
+                Premium Rentals Across America Since 2018
               </div>
             </div>
           </div>
@@ -255,7 +257,7 @@ const AboutUs: React.FC = () => {
           }`}>
             Ready to Experience
             <span className="block bg-gradient-to-r from-cyan-300 to-emerald-300 bg-clip-text text-transparent">
-              NYC Living Excellence?
+              American Living Excellence?
             </span>
           </h2>
           <Link

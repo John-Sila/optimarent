@@ -67,9 +67,8 @@ const TermsOfService: React.FC = () => {
             <p className={`text-lg leading-relaxed ${
               theme === 'dark' ? 'text-slate-200' : 'text-slate-800'
             }`}>
-              By accessing or using OptimaRent (the "Service"), you agree to be bound by these Terms of Service ("Terms"). 
-              If you do not agree, please do not use the Service. OptimaRent operates as a platform connecting renters 
-              with available properties in New York City.
+              By accessing or using OptimaRent (the "Service"), herein referred to as Us, Our or We, you agree to be bound by these Terms of Service ("Terms"). 
+              If you do not agree, please do not use the Service. OptimaRent operates as a platform connecting customers to our own properties.<br /><strong>Leave the hard work to us</strong>.
             </p>
           </section>
 
@@ -140,7 +139,7 @@ const TermsOfService: React.FC = () => {
                 • Verify property details with landlords before final commitments.
               </p>
               <p className={`${theme === 'dark' ? 'text-slate-200' : 'text-slate-800'}`}>
-                • NYC rental laws apply. Review local regulations independently.
+                • Jurisdictional rental laws apply. Review local regulations independently.
               </p>
               <p className={`${theme === 'dark' ? 'text-slate-200' : 'text-slate-800'}`}>
                 • You are responsible for all lease agreements with property owners.
@@ -155,15 +154,24 @@ const TermsOfService: React.FC = () => {
                 : 'text-slate-900'
             }`}>
               <Shield className="w-8 h-8" />
-              <span>5. Limitation of Liability</span>
+              <span>5. Liability & Property Ownership</span>
             </h2>
-            <p className={`text-lg leading-relaxed ${
-              theme === 'dark' ? 'text-slate-200' : 'text-slate-800'
-            }`}>
-              OptimaRent acts as a facilitator, not a leasing agent. We do not guarantee property availability, 
-              lease approvals, or landlord responses. Users assume all risks associated with rental transactions.
-            </p>
+            <div className="space-y-4 text-lg leading-relaxed">
+              <p className={`${theme === 'dark' ? 'text-slate-200' : 'text-slate-800'}`}>
+                <strong>OptimaRent owns and manages premium properties across major U.S. cities</strong> including Manhattan, Brooklyn, Williamsburg, Chicago, Miami, Los Angeles, and more. 
+                We guarantee listing accuracy and handle all leasing directly.
+              </p>
+
+              <p className={`${theme === 'dark' ? 'text-slate-200' : 'text-slate-800'}`}>
+                Once application fee + first month's rent is paid via Airtm to <strong>optimabyte@gmail.com</strong>, 
+                your lease is secured and activation email sent within 1 hour.
+              </p>
+              <p className={`${theme === 'dark' ? 'text-slate-200' : 'text-slate-800'}`}>
+                We maintain properties to state leasing standards and provide direct tenant support.
+              </p>
+            </div>
           </section>
+
 
           <section className="mb-16">
             <h2 className={`text-3xl font-black mb-6 flex items-center space-x-3 ${
