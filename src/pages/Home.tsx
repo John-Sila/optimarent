@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { 
   ChevronRight, 
   MapPin, 
-  DollarSign, 
   Bed, 
   Bath, 
   Home as LucideHome, 

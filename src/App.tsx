@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeProvider, useTheme } from './contexts/ThemeContext';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Footer from './components/Footer';
@@ -9,7 +9,7 @@ import AboutUs from './pages/AboutUs';
 import TermsOfService from './pages/TermsOfService';
 
 function AppContent() {
-  const { theme, setTheme } = useTheme();
+  useTheme();
   return (
     <div className="min-h-screen">
       <Router>

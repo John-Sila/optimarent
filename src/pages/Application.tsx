@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
-import { ArrowLeft, Download, Send, CheckCircle, Mail, Clock, Home } from 'lucide-react';
+import { ArrowLeft, Send, CheckCircle, Mail, Home } from 'lucide-react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 interface Property {
@@ -354,6 +354,7 @@ if (submitted) {
                 Property Code <span className="text-rose-500">*</span>
               </label>
               <select
+                title='code'
                 value={selectedCode}
                 onChange={(e) => setSelectedCode(e.target.value)}
                 className={`
