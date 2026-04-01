@@ -21,8 +21,8 @@ const Home: React.FC = () => {
     { 
       code: '001', 
       city: 'FL', 
-      beds: 1, 
-      baths: 1, 
+      beds: 2, 
+      baths: 2, 
       rent: '$1,200', 
       img: 'https://i.postimg.cc/k5F8x4FF/My-Apartment-In-The-States.png'
     },

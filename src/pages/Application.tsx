@@ -24,7 +24,7 @@ const Application: React.FC = () => {
       state: "Florida,", 
       city: "St. Petersburg",
       zipcode: "10001",
-      nature: "1 Bedroom Luxury Apartment",
+      nature: "2 Bedroom Luxury Apartment",
       monthly_rent: "$1,200",
       application_fee: "$75",
       currency: "USD"
